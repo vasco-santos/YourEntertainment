@@ -1,0 +1,53 @@
+﻿<Page x:Class="YourEntertainment.Pages.Dados"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" Cursor="Hand"
+	Title="Dados">
+
+    <Grid x:Name="GestaoGrid">
+        <Canvas x:Name="GestaoCanvas">
+            <Image x:Name="selected" Stretch="Fill">
+            </Image>
+            <Button x:Name="sale"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="stocks"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="dados"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="logOut"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="settings"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Viewbox x:Name="lojaView">
+                <TextBlock x:Name="lojaData" TextWrapping="Wrap"/>
+            </Viewbox>
+
+            <Viewbox x:Name="funcView">
+                <TextBlock x:Name="funcData" TextWrapping="Wrap"/>
+            </Viewbox>
+            <Canvas x:Name="BlueBarCanvas" >
+                <ToggleButton x:Name="Diario" Content="Vendas Diárias" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated"/>
+                <ToggleButton x:Name="MaisVendidos" Content="Mais Vendidos" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated"/>
+                <ToggleButton x:Name="VendasPorFunc" Content="Por Funcionário" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated" />
+                <ToggleButton x:Name="VendasPorLoja" Content="Por Loja" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated"/>
+            </Canvas>
+            <Canvas x:Name="InfoCanvas" Visibility="Collapsed">
+                <DataGrid x:Name="StatsGrid" FontSize="20">
+                </DataGrid>
+            </Canvas>
+        </Canvas>
+         
+        
+        <Grid.Background>
+            <ImageBrush ImageSource="/YourEntertainment;component/Theme/Background/LeftBarPage.jpg" Stretch="Fill"/>
+        </Grid.Background>
+    </Grid>
+</Page>

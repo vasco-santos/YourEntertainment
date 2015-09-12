@@ -1,0 +1,27 @@
+﻿<Page x:Class="YourEntertainment.Pages.LogIn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" Cursor="Hand"
+	Title="LogIn">
+
+    <Grid x:Name="LogInGrid">
+        <Canvas x:Name="LogInCanvas">
+            
+            <Button x:Name="logIn"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="UserNameB"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="PasswordB"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}" >
+            </Button>
+        </Canvas>
+        <Grid.Background>
+            <ImageBrush ImageSource="/YourEntertainment;component/Theme/Background/LogInInicial.jpg" Stretch="Fill"/>
+        </Grid.Background>
+    </Grid>
+</Page>

@@ -1,0 +1,136 @@
+﻿<Page x:Class="YourEntertainment.Pages.Venda"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" Cursor="Hand"
+	Title="Venda">
+
+    <Grid x:Name="VendaGrid">
+        <Canvas x:Name="VendaCanvas">
+            <Image x:Name="selected" Stretch="Fill">
+            </Image>
+            <Button x:Name="sale"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="stocks"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="dados"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="logOut"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="settings"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Viewbox x:Name="lojaView">
+                <TextBlock x:Name="lojaData" TextWrapping="Wrap"/>
+            </Viewbox>
+            <Viewbox x:Name="funcView">
+                <TextBlock x:Name="funcData" TextWrapping="Wrap"/>
+            </Viewbox>
+            <!--PRODUTOS NA BASE DE DADOS-->
+            <Canvas x:Name="LeftCanvas" >
+                <ScrollViewer x:Name="ScrollerProdutos">
+                    <DataGrid x:Name="produtos" FontSize="20">
+                        
+                    </DataGrid>
+                </ScrollViewer>
+                <StackPanel x:Name="ProductFilters" Orientation="Horizontal" >
+                    <ToggleButton x:Name="All" Content="*" Checked="FilterActivated"/>
+                    <ToggleButton x:Name="Musica" Content="Musica" Checked="FilterActivated"/>
+                    <ToggleButton x:Name="Literatura" Content="Literatura" Checked="FilterActivated"/>
+                    <ToggleButton x:Name="Cinema" Content="Cinema" Checked="FilterActivated"/>
+                    <ToggleButton x:Name="Videojogos" Content="Videojogos" Checked="FilterActivated"/>
+                    <ToggleButton x:Name="Bilheteira" Content="Bilheteira" Checked="FilterActivated"/>
+                </StackPanel>
+                <StackPanel x:Name="SearchByCode" Orientation="Horizontal">
+                    <Border BorderBrush="{x:Null}">
+                        <TextBlock x:Name="Pesquisar" Text="Por Codigo" FontSize="16" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+                    </Border>
+                    <TextBox x:Name="CodigoBox" FontSize="15"/>
+                    <Button x:Name="PesquisarCodigo" Click="PesquisarCodigo_OnClick" Content="Adicionar">
+                    </Button>
+                </StackPanel>
+            </Canvas>
+            <!--VENDA-->
+            <Canvas x:Name="RightCanvas">
+                <ScrollViewer x:Name="ScrollerVenda">
+                    <ListView x:Name="venda" FontSize="15" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Codigo" Width="50" DisplayMemberBinding="{Binding Codigo}" />
+                                <GridViewColumn Header="Nome" Width="120" DisplayMemberBinding="{Binding Nome}" />
+                                <GridViewColumn Header="Valor" Width="50" DisplayMemberBinding="{Binding Valor}" />
+                                <GridViewColumn Header="Qtd" Width="150" DisplayMemberBinding="{Binding Qtd}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+                <StackPanel x:Name="addremove">
+                    <Button x:Name="add" Click="Add_OnClick" Content="+"  FontSize="30"/>
+                    <Button x:Name="remove" Click="Remove_OnClick" Content="-" FontSize="30"/>
+                </StackPanel>
+                <StackPanel x:Name="ValuePanel" >
+                    <Border x:Name="border1"  BorderBrush="DarkGray" >
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBlock x:Name="value"  Text="        Valor:                          " FontSize="20"  />
+                            <TextBlock x:Name="valueBox" FontSize="20" />
+                        </WrapPanel>
+                    </Border>
+                    <Border x:Name="border2" BorderBrush="DarkGray" Visibility="Visible" >
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBlock x:Name="valorfinal"  Text="        Com desconto:          " FontSize="20" TextAlignment="Center"/>
+                            <TextBox x:Name="ValorfinalBox" FontSize="20" TextAlignment="Center" BorderBrush="{x:Null}"/>
+                        </WrapPanel>
+                    </Border>
+                </StackPanel>
+                <Button x:Name="finish" Click="Finish_OnClick"  Content="Finalizar" FontSize="20"/>
+
+                <Canvas x:Name="ClientInfo">
+
+                    <TextBlock x:Name="aderente" Text="Aderente" FontSize="20" />
+                    <TextBox x:Name="AderenteBox"  FontSize="20" VerticalContentAlignment="Center" IsEnabled="False"/>
+                    <Button x:Name="SearchAderente" Click="SearchAderente_OnClick" Content="Procurar"/>
+                    <TextBlock x:Name="nome" Text="Nome" FontSize="20" />
+                    <TextBox x:Name="NameBox" VerticalContentAlignment="Center" />
+                    <TextBlock x:Name="nif" Text="NIF" FontSize="20" />
+                    <TextBox x:Name="NifBox" FontSize="20" VerticalContentAlignment="Center" />
+
+                </Canvas>
+            </Canvas>
+            <Grid x:Name="ConfirmSale" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Grid Background="Black" Opacity="0.5"/>
+                <Border
+                        Background="DarkGray"
+                        BorderBrush="Black"
+                        BorderThickness="0.5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        >
+                    <Canvas x:Name="ConfirmForm" >
+                        <TextBlock x:Name="Caderente" Text="Aderente" FontSize="20" />
+                        <TextBox x:Name="CAderenteBox"  FontSize="20" VerticalContentAlignment="Center" IsEnabled="False"/>
+                        <TextBlock x:Name="Cnome" Text="Nome" FontSize="20" />
+                        <TextBox x:Name="CNameBox" VerticalContentAlignment="Center"  IsEnabled="False" />
+                        <TextBlock x:Name="Cnif" Text="NIF" FontSize="20" />
+                        <TextBox x:Name="CNifBox" FontSize="20" VerticalContentAlignment="Center"  IsEnabled="False"/>
+                        <TextBlock x:Name="Cvalorfinal" Text="Valor Final" FontSize="20"  />
+                        <TextBox x:Name="CvalorfinalBox" FontSize="20" VerticalContentAlignment="Center" IsEnabled="False"/>
+                        <StackPanel x:Name="ConfirmButtons" Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="Submit" Content="Confirmar" Margin="5" Click="Submit_OnClick"/>
+                            <Button x:Name="Cancel" Content="Cancelar" Margin="5" Click="Cancel_OnClick"/>
+                        </StackPanel>
+                    </Canvas>
+                </Border>
+            </Grid>
+        </Canvas>
+        <Grid.Background>
+            <ImageBrush ImageSource="/YourEntertainment;component/Theme/Background/mainPage.jpg" Stretch="Fill"/>
+        </Grid.Background>
+
+    </Grid>
+</Page>

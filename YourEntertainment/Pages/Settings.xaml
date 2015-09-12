@@ -1,0 +1,68 @@
+﻿<Page x:Class="YourEntertainment.Pages.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" Cursor="Hand"
+	Title="Settings">
+
+    <Grid>
+        <Canvas x:Name="SettingsCanvas">
+            <Canvas x:Name="AddPessoa" Background="Azure"></Canvas>
+            <Canvas x:Name="AddFuncionario" Background="Azure"></Canvas>
+            <Canvas x:Name="Listar" Background="Azure"></Canvas>
+            <Canvas x:Name="AddLojaC" Background="Azure"></Canvas>
+            <Canvas x:Name="ChangeInfo" Background="Azure"></Canvas>
+
+            <Canvas x:Name="BlueBarCanvas1" >
+                <ToggleButton x:Name="addFuncionario" Content="Adicionar Funcionário" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated"/>
+                <ToggleButton x:Name="listaFuncionario" Content="Listar Funcionários" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated" />
+                <ToggleButton x:Name="addAderente" Content="Adicionar Aderente" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated"/>
+                <ToggleButton x:Name="listaAderente" Content="Listar Aderentes" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated" />
+                <ToggleButton x:Name="addLoja" Content="Adicionar Loja" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated"/>
+                <ToggleButton x:Name="listaLoja" Content="Listar Lojas" Background="{x:Null}" FontSize="25" FontWeight="ExtraBlack" Foreground="Azure" BorderBrush="{x:Null}" Checked="FilterActivated" />
+            </Canvas>
+
+            <ScrollViewer x:Name="ScrollerPessoas">
+                <DataGrid x:Name="PessoasGrid" FontSize="20" CanUserAddRows="false" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                </DataGrid>
+            </ScrollViewer>
+
+            <ScrollViewer x:Name="ScrollerInfo">
+                <DataGrid x:Name="InfoGrid" FontSize="20" CanUserAddRows="false" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                </DataGrid>
+            </ScrollViewer>
+
+            <ScrollViewer x:Name="ScrollerGerentes">
+                <DataGrid x:Name="GerentesGrid" FontSize="20" CanUserAddRows="false">
+                </DataGrid>
+            </ScrollViewer>
+
+            <Button x:Name="sale"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="stocks"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="dados"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="logOut"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Button x:Name="settings"  Click="ButtonOnClick" Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Foreground="{x:Null}">
+            </Button>
+            <Viewbox x:Name="lojaView">
+                <TextBlock x:Name="lojaData" TextWrapping="Wrap"/>
+            </Viewbox>
+            <Viewbox x:Name="funcView">
+                <TextBlock x:Name="funcData" TextWrapping="Wrap"/>
+            </Viewbox>
+        </Canvas>
+            <Grid.Background>
+            <ImageBrush ImageSource="/YourEntertainment;component/Theme/Background/LeftBarPage.jpg" Stretch="Fill"/>
+        </Grid.Background>
+    </Grid>
+</Page>
